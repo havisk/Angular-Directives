@@ -169,17 +169,28 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var imgKool = function imgKool(ImageService) {
+var imgKool = function imgKool(ImageService, $timeout) {
 
   return {
     restrict: 'AE',
+    replace: true,
     scope: {
       image: '='
     },
-    template: '\n      <div class="mop">\n        <img ng-src="{{image.url}}" ng-click = "count = count + 1" ng-init="count=0" >\n        <div class="rip"  ng-class="{ \'hidden\': !showContent }">\n        <span class="glyphicon glyphicon-thumbs-up"><i class="fa fa-star-o"></i>\n        <p class="star">{{count}} Likes</p></span>\n      </div>\n    '
+    template: '\n      <section class="mop" >\n        <img id="doit" ng-src="{{image.url}}" ng-click= "removeClass(); count = count + 1" ng-init="count=0">\n        <div class="butt rip" id="hide">\n          <span class="new"><i class="fa fa-star-o"></i>\n          <p class="star">{{count}} Likes</p></span>\n        </div>\n      </section>\n\n    ',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        console.log('here');
+        element.find('div').removeClass('.rip');
+      });
+      $timeout(function () {
+        element.find('.butt').addClass(".rip");
+      }, 5000);
+    }
+
   };
 };
-imgKool.$inject = ['ImageService'];
+imgKool.$inject = ['ImageService', '$timeout'];
 
 exports['default'] = imgKool;
 module.exports = exports['default'];

@@ -1,20 +1,35 @@
-let imgKool = function(ImageService) {
+let imgKool = function(ImageService, $timeout) {
 
   return{
-    restrict: 'AE',
+    restrict: 'AE', 
+    replace: true,
     scope:{
       image: '='
     },
     template:`
-      <div class="mop">
-        <img ng-src="{{image.url}}" ng-click = "count = count + 1" ng-init="count=0" >
-        <div class="rip"  ng-class="{ 'hidden': !showContent }">
-        <span class="glyphicon glyphicon-thumbs-up"><i class="fa fa-star-o"></i>
-        <p class="star">{{count}} Likes</p></span>
-      </div>
-    `
-  };
+      <section class="mop" >
+        <img id="doit" ng-src="{{image.url}}" ng-click= "removeClass(); count = count + 1" ng-init="count=0">
+        <div class="butt rip" id="hide">
+          <span class="new"><i class="fa fa-star-o"></i>
+          <p class="star">{{count}} Likes</p></span>
+        </div>
+      </section>
+
+    `,
+    link: function(scope, element, attrs){
+        element.on('click', function() {
+          console.log('here');
+        element.find('div').removeClass('.rip');
+      });
+        $timeout(function() {
+        element.find('.butt').addClass(".rip")
+        }, 5000);
+    
+    }
+ 
+  }
+ 
 };
-imgKool.$inject = ['ImageService'];
+imgKool.$inject = ['ImageService','$timeout'];
 
 export default imgKool;
