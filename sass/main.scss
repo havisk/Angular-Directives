@@ -1,6 +1,41 @@
 // Put any @imports here
 // See Readme for a list of supported ones
+@import 'foundation';
+@import "font-awesome";
+
 
 body {
   background: #e2ebf3;
+}
+
+h1, {
+  color: white;
+}
+body img {
+  width: 250px;
+  height: 250px;
+}
+
+.mop {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+
+.fa{
+  color: darkorange;
+  font-size: 100px;
+}
+
+.rip{
+  position: relative;
+  top: -136px;
+  left: 70px;
+} 
+p{
+  color: #00FF00;
+  text-shadow: 2px 2px black;
 }
