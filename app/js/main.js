@@ -177,15 +177,13 @@ var imgKool = function imgKool(ImageService, $timeout) {
     scope: {
       image: '='
     },
-    template: '\n      <section class="mop" >\n        <img id="doit" ng-src="{{image.url}}" ng-click= "removeClass(); count = count + 1" ng-init="count=0">\n        <div class="butt rip" id="hide">\n          <span class="new"><i class="fa fa-star-o"></i>\n          <p class="star">{{count}} Likes</p></span>\n        </div>\n      </section>\n\n    ',
-    link: function link(scope, element, attrs) {
+    template: '\n      <section class="mop" >\n        <img id="doit" ng-src="{{image.url}}" ng-click= "removeClass(); count = count + 1" ng-init="count=0">\n        <div class="butt rip" id="hide">\n          <span class="new"><i class="fa fa-star-o"></i>\n          <p class="star">{{count}} Likes</p></span>\n        </div>\n      </section>\n\n    ', link: function link(scope, element, attrs) {
       element.on('click', function () {
-        console.log('here');
-        element.find('div').removeClass('.rip');
+        element.find('div').removeClass('rip');
+        $timeout(function () {
+          element.find('div').addClass("rip");
+        }, 1000);
       });
-      $timeout(function () {
-        element.find('.butt').addClass(".rip");
-      }, 5000);
     }
 
   };

@@ -15,17 +15,17 @@ let imgKool = function(ImageService, $timeout) {
         </div>
       </section>
 
-    `,
-    link: function(scope, element, attrs){
+    `,link: function(scope, element, attrs){
         element.on('click', function() {
-          console.log('here');
-        element.find('div').removeClass('.rip');
+          element.find('div').removeClass('rip');
+          $timeout(function() {
+            element.find('div').addClass("rip")
+          }, 1000);
       });
-        $timeout(function() {
-        element.find('.butt').addClass(".rip")
-        }, 5000);
-    
     }
+  
+    
+    
  
   }
  
